@@ -1,6 +1,6 @@
-# shop_bloc
+# Shop BLoC
 
-A new Flutter project.
+Flutter project.
 
 ## Getting Started
 
