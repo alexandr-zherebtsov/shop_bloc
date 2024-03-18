@@ -1,8 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:one_day_auth/one_day_auth.dart';
+import 'package:shop_bloc/core/data_models/user_model.dart';
 import 'package:shop_bloc/features/auth/auth_screen.dart';
 import 'package:shop_bloc/features/code_screen/code_screen.dart';
 import 'package:shop_bloc/features/forgotten_password/forgotten_password_screen.dart';
 import 'package:shop_bloc/features/main/main_screen.dart';
+import 'package:shop_bloc/features/phone_number/phone_number_screen.dart';
 import 'package:shop_bloc/features/profile/user_screen.dart';
 import 'package:shop_bloc/features/splash/splash_screen.dart';
 
@@ -18,6 +22,7 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: AuthRoute.page),
+        AutoRoute(page: PhoneNumberRoute.page),
         AutoRoute(page: CodeRoute.page),
         AutoRoute(page: ForgottenPasswordRoute.page),
         AutoRoute(page: UserRoute.page),

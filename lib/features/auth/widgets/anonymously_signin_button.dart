@@ -8,15 +8,13 @@ import 'package:shop_bloc/core/di/di.dart';
 import 'package:shop_bloc/core/router/router.dart';
 import 'package:shop_bloc/ui_kit/widgets/snackbar.dart';
 
-class AppTwitterXSignInButton extends StatelessWidget {
+class AnonymouslySignInButton extends StatelessWidget {
   final UsersRepository _usersRepository;
 
-  AppTwitterXSignInButton({
+  AnonymouslySignInButton({
     UsersRepository? usersRepository,
     super.key,
   }) : _usersRepository = usersRepository ?? getIt<UsersRepository>();
-
-  // static const String _name = 'X';
 
   void _authorizedRoute(final BuildContext context) {
     if (context.router.current.name != UserRoute.name) {
@@ -37,9 +35,9 @@ class AppTwitterXSignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TwitterSignInView(
+    return AuthAnonymouslyView(
       listener: (OneDayAuthState state) {
-        if (state is OAuthAuthorized) {
+        if (state is AuthAnonymouslyAuthorized) {
           _authorizedRoute(context);
         } else if (state is OneDayAuthException) {
           AppSnackBar.show(
@@ -58,57 +56,28 @@ class AppTwitterXSignInButton extends StatelessWidget {
         required SignInCallback signIn,
         required Object? exception,
       }) {
-        return TwitterXSignInButton(
-          onPressed: () => signIn(
-            afterAuthAction: _checkUser,
-          ),
-          isLoading: isLoading,
-        );
-        /*
         return SizedBox(
-          height: 48,
-          child: OutlinedButton(
-            onPressed: () => signIn(
-              afterAuthAction: _checkUser,
-            ),
-            style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
-                  side: MaterialStateProperty.all<BorderSide>(
-                    BorderSide.none,
+          height: 36,
+          child: isLoading
+              ? const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                )
+              : TextButton(
+                  onPressed: () => signIn(
+                    afterAuthAction: (User? user) => _checkUser(user),
                   ),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    AppColors.gray1,
+                  style: ButtonStyle(
+                    textStyle: MaterialStateProperty.all<TextStyle>(
+                      const TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
-                  overlayColor: MaterialStateProperty.all<Color>(
-                    AppColors.white1.withOpacity(.08),
+                  child: const Text(
+                    'Sign in anonymously',
                   ),
                 ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: isLoading
-                  ? [
-                      const ButtonLoader(
-                        buttonHeight: 48,
-                        color: AppColors.white1,
-                      ),
-                    ]
-                  : [
-                      SvgPicture.asset(
-                        Assets.svg.twitterX,
-                        width: 22,
-                        height: 22,
-                      ),
-                      const SizedBox(width: 8),
-                      const Text(
-                        'Continue with $_name',
-                        style: TextStyle(
-                          color: AppColors.white1,
-                        ),
-                      ),
-                    ],
-            ),
-          ),
         );
-        */
       },
     );
   }

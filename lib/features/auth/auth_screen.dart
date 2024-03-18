@@ -24,9 +24,9 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return switch (_authType) {
-      StartAuthType.email => const EmailView(),
-      StartAuthType.phone => const PhoneView(),
-      StartAuthType.phoneWithCode => const PhoneWithCodeView(),
+      StartAuthType.email => const AppEmailPasswordView(),
+      StartAuthType.phone => const AppPhoneView(),
+      StartAuthType.phoneWithCode => const AppPhoneWithCodeView(),
     };
   }
 }

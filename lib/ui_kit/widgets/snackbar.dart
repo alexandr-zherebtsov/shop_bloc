@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_bloc/core/utils/extensions/string_extension.dart';
 
@@ -12,6 +13,7 @@ class AppSnackBar {
       ..clearSnackBars()
       ..showSnackBar(
         MainSnackBar(
+          context: context,
           title: title,
           subtitle: subtitle,
           isError: isError,
@@ -26,6 +28,7 @@ class AppSnackBar {
     bool? isError,
   ) {
     return MainSnackBar(
+      context: context,
       title: title,
       subtitle: subtitle,
       isError: isError ?? true,
@@ -35,11 +38,13 @@ class AppSnackBar {
 
 class MainSnackBar extends SnackBar {
   MainSnackBar({
+    required final BuildContext context,
     final String? title,
     final String? subtitle,
     final bool isError = true,
     super.key,
   }) : super(
+          width: kIsWeb ? 420 : null,
           behavior: SnackBarBehavior.floating,
           backgroundColor: const Color(0xD31A293D),
           content: Row(

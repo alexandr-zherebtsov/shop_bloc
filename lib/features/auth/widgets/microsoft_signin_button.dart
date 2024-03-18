@@ -8,15 +8,15 @@ import 'package:shop_bloc/core/di/di.dart';
 import 'package:shop_bloc/core/router/router.dart';
 import 'package:shop_bloc/ui_kit/widgets/snackbar.dart';
 
-class AppAppleSignInButton extends StatelessWidget {
+class AppMicrosoftSignInButton extends StatelessWidget {
   final UsersRepository _usersRepository;
 
-  AppAppleSignInButton({
+  AppMicrosoftSignInButton({
     UsersRepository? usersRepository,
     super.key,
   }) : _usersRepository = usersRepository ?? getIt<UsersRepository>();
 
-  // static const String _name = 'Apple';
+  // static const String _name = 'Microsoft';
 
   void _authorizedRoute(final BuildContext context) {
     if (context.router.current.name != UserRoute.name) {
@@ -37,7 +37,7 @@ class AppAppleSignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppleSignInView(
+    return MicrosoftSignInView(
       listener: (OneDayAuthState state) {
         if (state is OAuthAuthorized) {
           _authorizedRoute(context);
@@ -58,7 +58,7 @@ class AppAppleSignInButton extends StatelessWidget {
         required SignInCallback signIn,
         required Object? exception,
       }) {
-        return AppleSignInButton(
+        return MicrosoftInButton(
           onPressed: () => signIn(
             afterAuthAction: _checkUser,
           ),
@@ -73,40 +73,34 @@ class AppAppleSignInButton extends StatelessWidget {
             ),
             style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
                   side: MaterialStateProperty.all<BorderSide>(
-                    BorderSide.none,
+                    const BorderSide(
+                      color: AppColors.gray1,
+                    ),
                   ),
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    AppColors.gray1,
+                    AppColors.white1,
                   ),
                   overlayColor: MaterialStateProperty.all<Color>(
-                    AppColors.white1.withOpacity(.08),
+                    AppColors.gray1.withOpacity(.06),
                   ),
                 ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: isLoading
                   ? [
-                      const ButtonLoader(
-                        buttonHeight: 48,
-                        color: AppColors.white1,
-                      ),
+                      const ButtonLoader(buttonHeight: 48),
                     ]
                   : [
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 4,
-                        ),
-                        child: Icon(
-                          Icons.apple,
-                          size: 32,
-                          color: AppColors.white1,
-                        ),
+                      SvgPicture.asset(
+                        Assets.svg.microsoft,
+                        width: 24,
+                        height: 24,
                       ),
                       const SizedBox(width: 8),
                       const Text(
                         'Continue with $_name',
                         style: TextStyle(
-                          color: AppColors.white1,
+                          color: AppColors.gray1,
                         ),
                       ),
                     ],

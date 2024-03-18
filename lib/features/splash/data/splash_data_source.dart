@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:one_day_auth/one_day_auth.dart';
 
 abstract interface class SplashDataSource {
   Future<User?> fetchData();
@@ -7,18 +8,10 @@ abstract interface class SplashDataSource {
 class SplashDataSourceImpl implements SplashDataSource {
   SplashDataSourceImpl({required this.auth});
 
-  final FirebaseAuth auth;
+  final FirebaseAuthService auth;
 
   @override
   Future<User?> fetchData() async {
-    try {
-      if (FirebaseAuth.instance.currentUser != null) {
-        await FirebaseAuth.instance.currentUser?.reload();
-        return FirebaseAuth.instance.currentUser;
-      }
-      return null;
-    } catch (e) {
-      return null;
-    }
+    return auth.reloadUser();
   }
 }

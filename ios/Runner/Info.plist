@@ -32,6 +32,7 @@
 				<string>$(GOOGLE_REVERSED_CLIENT_ID)</string>
 				<string>$(FACEBOOK_LOGIN_PROTOCOL)</string>
 				<string>socialauth</string>
+				<string>auth</string>
 			</array>
 		</dict>
 	</array>

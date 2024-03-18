@@ -8,15 +8,15 @@ import 'package:shop_bloc/core/di/di.dart';
 import 'package:shop_bloc/core/router/router.dart';
 import 'package:shop_bloc/ui_kit/widgets/snackbar.dart';
 
-class AppAppleSignInButton extends StatelessWidget {
+class AppGitHubSignInButton extends StatelessWidget {
   final UsersRepository _usersRepository;
 
-  AppAppleSignInButton({
+  AppGitHubSignInButton({
     UsersRepository? usersRepository,
     super.key,
   }) : _usersRepository = usersRepository ?? getIt<UsersRepository>();
 
-  // static const String _name = 'Apple';
+  // static const String _name = 'GitHub';
 
   void _authorizedRoute(final BuildContext context) {
     if (context.router.current.name != UserRoute.name) {
@@ -37,7 +37,7 @@ class AppAppleSignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppleSignInView(
+    return GitHubSignInView(
       listener: (OneDayAuthState state) {
         if (state is OAuthAuthorized) {
           _authorizedRoute(context);
@@ -58,7 +58,7 @@ class AppAppleSignInButton extends StatelessWidget {
         required SignInCallback signIn,
         required Object? exception,
       }) {
-        return AppleSignInButton(
+        return GitHubSignInButton(
           onPressed: () => signIn(
             afterAuthAction: _checkUser,
           ),
@@ -92,15 +92,10 @@ class AppAppleSignInButton extends StatelessWidget {
                       ),
                     ]
                   : [
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 4,
-                        ),
-                        child: Icon(
-                          Icons.apple,
-                          size: 32,
-                          color: AppColors.white1,
-                        ),
+                      SvgPicture.asset(
+                        Assets.svg.github,
+                        width: 24,
+                        height: 24,
                       ),
                       const SizedBox(width: 8),
                       const Text(

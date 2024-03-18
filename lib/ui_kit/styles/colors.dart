@@ -20,6 +20,9 @@ class AppColors {
   /// 2196F3
   static const Color blue1 = CupertinoColors.systemBlue;
 
+  /// 34C759
+  static const Color green1 = CupertinoColors.systemGreen;
+
   /// 1D5AEF
   static const Color blue2 = Color(0xFF1D5AEF);
 

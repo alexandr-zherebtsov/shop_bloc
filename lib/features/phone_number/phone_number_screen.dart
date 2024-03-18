@@ -10,14 +10,20 @@ import 'package:shop_bloc/ui_kit/widgets/main_button.dart';
 import 'package:shop_bloc/ui_kit/widgets/snackbar.dart';
 import 'package:shop_bloc/ui_kit/widgets/view_constraint.dart';
 
-class AppPhoneView extends StatefulWidget {
-  const AppPhoneView({super.key});
+@RoutePage()
+class PhoneNumberScreen extends StatefulWidget {
+  final AuthActions authAction;
+
+  const PhoneNumberScreen({
+    this.authAction = AuthActions.signIn,
+    super.key,
+  });
 
   @override
-  State<AppPhoneView> createState() => _AppPhoneViewState();
+  State<PhoneNumberScreen> createState() => _PhoneNumberScreenState();
 }
 
-class _AppPhoneViewState extends State<AppPhoneView> {
+class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   final GlobalKey<FormState> _phoneKey = GlobalKey<FormState>();
   final TextEditingController _nameTC = TextEditingController();
   final TextEditingController _phoneTC = TextEditingController();
@@ -39,6 +45,7 @@ class _AppPhoneViewState extends State<AppPhoneView> {
   @override
   Widget build(BuildContext context) {
     return PhoneView(
+      initialAuthAction: widget.authAction,
       listener: (OneDayAuthState state, AuthActions action) {
         if (state is OneDayAuthException) {
           AppSnackBar.show(
