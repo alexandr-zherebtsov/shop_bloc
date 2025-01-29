@@ -88,10 +88,10 @@ class _AppPhoneViewState extends State<AppPhoneView> {
                       changeAction();
                     },
                     style: ButtonStyle(
-                      overlayColor: MaterialStateProperty.all<Color>(
+                      overlayColor: WidgetStateProperty.all<Color>(
                         AppColors.white1.withOpacity(.08),
                       ),
-                      foregroundColor: MaterialStateProperty.all<Color>(
+                      foregroundColor: WidgetStateProperty.all<Color>(
                         AppColors.white1,
                       ),
                     ),

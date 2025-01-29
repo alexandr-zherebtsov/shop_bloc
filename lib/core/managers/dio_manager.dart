@@ -6,6 +6,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shop_bloc/core/utils/extensions/string_extension.dart';
 
 class DioManager {
+  // ignore: unused_field
   final String _baseUrl;
   final String _version;
   final String _platform;
@@ -39,7 +40,7 @@ class DioManager {
         // baseUrl: _baseUrl,
         baseUrl: 'https://api.themoviedb.org/3',
         queryParameters: {
-          'api_key' : '10d39203e458fc0a8dec50a358c99540',
+          'api_key': '10d39203e458fc0a8dec50a358c99540',
         },
         headers: <String, String>{
           'Content-Type': 'application/json',

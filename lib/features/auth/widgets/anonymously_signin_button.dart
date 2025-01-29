@@ -67,7 +67,7 @@ class AnonymouslySignInButton extends StatelessWidget {
                     afterAuthAction: (User? user) => _checkUser(user),
                   ),
                   style: ButtonStyle(
-                    textStyle: MaterialStateProperty.all<TextStyle>(
+                    textStyle: WidgetStateProperty.all<TextStyle>(
                       const TextStyle(
                         fontSize: 18,
                       ),

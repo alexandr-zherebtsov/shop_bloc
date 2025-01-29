@@ -108,10 +108,10 @@ class _AppEmailPasswordViewState extends State<AppEmailPasswordView> {
                       changeAction();
                     },
                     style: ButtonStyle(
-                      overlayColor: MaterialStateProperty.all<Color>(
-                        AppColors.white1.withOpacity(.08),
+                      overlayColor: WidgetStateProperty.all<Color>(
+                        AppColors.white1.withOpacityValue(.08),
                       ),
-                      foregroundColor: MaterialStateProperty.all<Color>(
+                      foregroundColor: WidgetStateProperty.all<Color>(
                         AppColors.white1,
                       ),
                     ),
@@ -244,7 +244,7 @@ class _AppEmailPasswordViewState extends State<AppEmailPasswordView> {
                       TextButton(
                         onPressed: () => _phoneRoute(action),
                         style: ButtonStyle(
-                          textStyle: MaterialStateProperty.all<TextStyle>(
+                          textStyle: WidgetStateProperty.all<TextStyle>(
                             const TextStyle(
                               fontSize: 18,
                             ),

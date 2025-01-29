@@ -25,7 +25,7 @@ class _ForgottenPasswordScreenState extends State<ForgottenPasswordScreen> {
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
           title: const Text(
             'Forgotten password',

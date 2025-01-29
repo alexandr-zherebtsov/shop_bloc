@@ -69,7 +69,7 @@ class AppActionDialog extends StatelessWidget {
         actions: [
           if (!okType)
             CupertinoDialogAction(
-              onPressed: context.router.pop,
+              onPressed: context.router.popForced,
               textStyle: TextStyle(
                 color: firstColor,
               ),
@@ -78,7 +78,7 @@ class AppActionDialog extends StatelessWidget {
               ),
             ),
           CupertinoDialogAction(
-            onPressed: () => context.router.pop(true),
+            onPressed: () => context.router.popForced(true),
             textStyle: TextStyle(
               color: secondColor,
             ),
@@ -108,31 +108,31 @@ class AppActionDialog extends StatelessWidget {
         if (!okType)
           TextButton(
             style: Theme.of(context).textButtonTheme.style?.copyWith(
-                  overlayColor: MaterialStateProperty.all<Color>(
+                  overlayColor: WidgetStateProperty.all<Color>(
                     firstColor.withOpacity(.08),
                   ),
-                  foregroundColor: MaterialStateProperty.all<Color>(
+                  foregroundColor: WidgetStateProperty.all<Color>(
                     firstColor,
                   ),
                 ),
-            onPressed: context.router.pop,
+            onPressed: context.router.popForced,
             child: Text(
               first ?? 'Cancel',
             ),
           ),
         TextButton(
           style: Theme.of(context).textButtonTheme.style?.copyWith(
-                overlayColor: MaterialStateProperty.all<Color>(
+                overlayColor: WidgetStateProperty.all<Color>(
                   secondColor.withOpacity(.08),
                 ),
-                foregroundColor: MaterialStateProperty.all<Color>(
+                foregroundColor: WidgetStateProperty.all<Color>(
                   secondColor,
                 ),
               ),
           child: Text(
             second ?? 'Yes',
           ),
-          onPressed: () => context.router.pop(true),
+          onPressed: () => context.router.popForced(true),
         ),
       ],
     );

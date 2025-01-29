@@ -53,10 +53,10 @@ class AppThemes {
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        overlayColor: MaterialStateProperty.all<Color>(
+        overlayColor: WidgetStateProperty.all<Color>(
           AppColors.blue1.withOpacity(.08),
         ),
-        foregroundColor: MaterialStateProperty.all<Color>(AppColors.blue1),
+        foregroundColor: WidgetStateProperty.all<Color>(AppColors.blue1),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(

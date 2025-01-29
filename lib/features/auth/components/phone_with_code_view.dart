@@ -100,10 +100,10 @@ class _AppPhoneWithCodeViewState extends State<AppPhoneWithCodeView> {
                       changeAction();
                     },
                     style: ButtonStyle(
-                      overlayColor: MaterialStateProperty.all<Color>(
+                      overlayColor: WidgetStateProperty.all<Color>(
                         AppColors.white1.withOpacity(.08),
                       ),
-                      foregroundColor: MaterialStateProperty.all<Color>(
+                      foregroundColor: WidgetStateProperty.all<Color>(
                         AppColors.white1,
                       ),
                     ),
